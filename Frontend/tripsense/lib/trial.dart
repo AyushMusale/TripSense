@@ -10,7 +10,7 @@ class TrialPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("main")
+            Text("frontend")
           ],
         ),
       ),
