@@ -14,6 +14,7 @@ class InputtextField extends StatelessWidget {
       height: screenHeight*0.075,
       width: screenWidth*0.6,
       child: TextField(
+        controller: controller,
         obscureText: seen,
         decoration: InputDecoration(
           label: Text(label, style: TextStyle(color: Colors.black),),
