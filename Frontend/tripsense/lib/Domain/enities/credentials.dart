@@ -1,12 +1,12 @@
 
 
-class User {
+class CredentialsModel {
   final String email;
   final String password;
   final String id;
   final String status;
 
-  User({
+  CredentialsModel({
     required this.email,
     required this.password,
     required this.id,
