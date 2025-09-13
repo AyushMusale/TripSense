@@ -77,14 +77,14 @@ class Signinpage extends StatelessWidget {
                       InputtextField(
                         label: 'Email',
                         controller: emailController,
-                        seen: false,
+                        passfield: false,
                       ),
                       //SizedBox(height: screenHeight*0.03),
                       Spacer(),
                       InputtextField(
                         label: 'Password',
                         controller: passwordController,
-                        seen: true,
+                        passfield: true,
                       ),
                       Align(
                         alignment: Alignment(-0.65, 0),
@@ -107,7 +107,7 @@ class Signinpage extends StatelessWidget {
                           final String password =
                               passwordController.text.trim();
                           context.read<AuthBloc>().add(
-                            Signinrequested(email, password),
+                            Signuprequested(email, password),
                           );
                         },
                         style: ButtonStyle(

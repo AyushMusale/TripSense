@@ -6,7 +6,7 @@ import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState>{
   final Signupusecase _signinusecase;
   AuthBloc(this._signinusecase): super(AuthInitial()){
-    on<Signinrequested>((event, emit) async{
+    on<Signuprequested>((event, emit) async{
       emit(AuthLoading());
       try{
         final res = await _signinusecase.execute(event.email, event.password);

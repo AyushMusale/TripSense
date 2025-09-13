@@ -1,9 +1,9 @@
 
 abstract class AuthEvent{} 
 
-class Signinrequested extends AuthEvent{
+class Signuprequested extends AuthEvent{
   final String email;
   final String password;
   
-  Signinrequested(this.email, this.password);
+  Signuprequested(this.email, this.password);
 }
