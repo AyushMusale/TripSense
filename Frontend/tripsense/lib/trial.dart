@@ -11,7 +11,7 @@ class TrialPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("checking if it changes locally"),
-            Text("anootger")
+            Text("another")
           ],
         ),
       ),
