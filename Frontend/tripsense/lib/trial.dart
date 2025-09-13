@@ -10,7 +10,8 @@ class TrialPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("checking if it changes locally")
+            Text("checking if it changes locally"),
+            Text("anootger")
           ],
         ),
       ),
