@@ -11,14 +11,14 @@ void main() {
 
 class MainApp extends StatelessWidget {
   final AuthrepoImp _authrepoImp;
-  final Signinusecase _signinusecase;
+  final Signupusecase _signupusecase;
   MainApp({super.key})
     : _authrepoImp = AuthrepoImp(),
-      _signinusecase = Signinusecase(AuthrepoImp());
+      _signupusecase = Signupusecase(AuthrepoImp());
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => AuthBloc(_signinusecase))],
+      providers: [BlocProvider(create: (_) => AuthBloc(_signupusecase))],
       child: MaterialApp(home: Scaffold(body: Center(child: Signinpage()))),
     );
   }

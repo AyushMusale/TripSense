@@ -1,10 +1,10 @@
 import 'package:tripsense/Data/repositories/authrepo.dart';
 import 'package:tripsense/Domain/enities/credentials.dart';
 
-class Signinusecase {
+class Signupusecase {
 
  final AuthrepoImp _authrepoImp;
-  Signinusecase(
+  Signupusecase(
     this._authrepoImp,
   );
 

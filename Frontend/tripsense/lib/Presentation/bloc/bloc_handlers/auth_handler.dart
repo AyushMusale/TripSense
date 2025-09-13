@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState>{
-  final Signinusecase _signinusecase;
+  final Signupusecase _signinusecase;
   AuthBloc(this._signinusecase): super(AuthInitial()){
     on<Signinrequested>((event, emit) async{
       emit(AuthLoading());
