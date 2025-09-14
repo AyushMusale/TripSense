@@ -5,6 +5,7 @@ import 'package:tripsense/Domain/usecases/signinusecase.dart';
 import 'package:tripsense/Domain/usecases/signupusecase.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/pages/signinpage.dart';
+import 'package:tripsense/Presentation/pages/homepage.dart';
 
 void main() {
   runApp(MainApp());
@@ -24,7 +25,7 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => AuthBloc(_signupusecase, _signinusecase ),),
       ],
-      child: MaterialApp(home: Scaffold(body: Center(child: Signinpage()))),
+      child: MaterialApp(home: Scaffold(body: Center(child: Homepage()))),
     );
   }
 }
