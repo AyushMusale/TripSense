@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tripsense/Data/repositories/authrepo.dart';
+import 'package:tripsense/Data/repositories/tripcreationrepo.dart';
 import 'package:tripsense/Domain/usecases/signinusecase.dart';
 import 'package:tripsense/Domain/usecases/signupusecase.dart';
+import 'package:tripsense/Domain/usecases/tripcreationusecase.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
+import 'package:tripsense/Presentation/bloc/bloc_handlers/tripcreation_handler.dart';
 import 'package:tripsense/Presentation/pages/navigationpage.dart';
 
 
@@ -12,20 +15,24 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
-  final AuthrepoImp _authrepoImp;
-  final Signupusecase _signupusecase;
-  final SignInUseCase _signinusecase;
-  MainApp({super.key})
-    : _authrepoImp = AuthrepoImp(),
-      _signupusecase = Signupusecase(AuthrepoImp()),
-      _signinusecase = SignInUseCase(AuthrepoImp());
+  
+ 
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
+  final AuthrepoImp authrepoImp = AuthrepoImp();
+  final Signupusecase signupusecase =  Signupusecase(authrepoImp);
+  final SignInUseCase signinusecase = SignInUseCase(AuthrepoImp());
+
+  final TripcreationrepoImp tripcreationrepoImp = TripcreationrepoImp();
+  final Tripcreationusecase tripcreationusecase = Tripcreationusecase(tripcreationrepoImp: tripcreationrepoImp);
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => AuthBloc(_signupusecase, _signinusecase ),),
+        BlocProvider(create: (_) => AuthBloc(signupusecase, signinusecase ),),
+        BlocProvider(create: (_)=> TripcreationHandler(tripcreationusecase))
       ],
-      child: MaterialApp(home: Scaffold(body: Center(child: Navigationpage()))),
+      child: MaterialApp(home: Scaffold(body: Center(child: Navigationpage(),),),),
     );
   }
 }
