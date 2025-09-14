@@ -12,20 +12,20 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
-  final AuthrepoImp _authrepoImp;
-  final Signupusecase _signupusecase;
-  final SignInUseCase _signinusecase;
-  MainApp({super.key})
-    : _authrepoImp = AuthrepoImp(),
-      _signupusecase = Signupusecase(AuthrepoImp()),
-      _signinusecase = SignInUseCase(AuthrepoImp());
+  
+ 
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
+  final AuthrepoImp authrepoImp = AuthrepoImp();
+  final Signupusecase signupusecase =  Signupusecase(authrepoImp);
+  final SignInUseCase signinusecase = SignInUseCase(AuthrepoImp());
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => AuthBloc(_signupusecase, _signinusecase ),),
+        BlocProvider(create: (_) => AuthBloc(signupusecase, signinusecase ),),
       ],
-      child: MaterialApp(home: Scaffold(body: Center(child: Navigationpage()))),
+      child: MaterialApp(home: Scaffold(body: Center(child: Navigationpage(),),),),
     );
   }
 }
