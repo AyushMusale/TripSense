@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:tripsense/Presentation/widgets/tripaddtextfield.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController destinationController = TextEditingController();
@@ -10,8 +16,10 @@ class Homepage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blue),
+    
+    return 
+    Scaffold(
+      
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
@@ -138,9 +146,7 @@ class Homepage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [BottomNavigationBarItem(label: "Home",icon: Icon(Icons.home)), BottomNavigationBarItem(label: "Home",icon: Icon(Icons.abc))],
-      ),
+      
     );
   }
 }
