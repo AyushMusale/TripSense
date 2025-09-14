@@ -27,7 +27,7 @@ class Signinpage extends StatelessWidget {
                 if (state is AuthFailure) {
                   ScaffoldMessenger.of(
                     context,
-                  ).showSnackBar(SnackBar(content: Text("Failed")));
+                  ).showSnackBar(SnackBar(content: Text(state.error)));
                 }
                 if (state is AuthSuccess) {
                   ScaffoldMessenger.of(
@@ -107,7 +107,7 @@ class Signinpage extends StatelessWidget {
                           final String password =
                               passwordController.text.trim();
                           context.read<AuthBloc>().add(
-                            Signuprequested(email, password),
+                            SignInrequested(email, password),
                           );
                         },
                         style: ButtonStyle(

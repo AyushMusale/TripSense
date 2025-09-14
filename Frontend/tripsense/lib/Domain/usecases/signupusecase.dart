@@ -1,12 +1,14 @@
 import 'package:tripsense/Data/repositories/authrepo.dart';
 import 'package:tripsense/Domain/enities/credentials.dart';
 
+class Signupusecase {
 
-class SignInUseCase {
-  final AuthrepoImp _authrepoImp;
+ final AuthrepoImp _authrepoImp;
+  Signupusecase(
+    this._authrepoImp,
+  );
 
-  SignInUseCase(this._authrepoImp);
   Future<Credentials> execute(String email, String password) async{
-    return await _authrepoImp.signInReq(email, password);
+    return await _authrepoImp.signUpReq(email, password);
   }
 }

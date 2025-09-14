@@ -7,3 +7,10 @@ class Signuprequested extends AuthEvent{
   
   Signuprequested(this.email, this.password);
 }
+
+class SignInrequested extends AuthEvent{
+  final String email;
+  final String password;
+  
+  SignInrequested(this.email, this.password);
+}
