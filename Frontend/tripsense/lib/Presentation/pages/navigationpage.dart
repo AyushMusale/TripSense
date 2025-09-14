@@ -14,8 +14,12 @@ class _NavigationpageState extends State<Navigationpage> {
     int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+  final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar:AppBar(backgroundColor: Colors.blue),
+      appBar:AppBar(
+        title: Text("TripSense", style: TextStyle(color: Colors.black, fontSize: screenHeight* 0.03),
+        ),
+      backgroundColor: Colors.blue),
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
@@ -24,7 +28,7 @@ class _NavigationpageState extends State<Navigationpage> {
             currentIndex = index;
           });
         },
-        items: [BottomNavigationBarItem(label: "Home",icon: Icon(Icons.home)), BottomNavigationBarItem(label: "Home",icon: Icon(Icons.abc))],
+        items: [BottomNavigationBarItem(label: "Home",icon: Icon(Icons.home)), BottomNavigationBarItem(label: "MyTrips",icon: Icon(Icons.abc))],
       ),
     );
   }
