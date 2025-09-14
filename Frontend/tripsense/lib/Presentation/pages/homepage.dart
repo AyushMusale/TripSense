@@ -38,7 +38,7 @@ class Homepage extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: screenHeight*0.05,
+                      height: screenHeight * 0.05,
                       child: Tripaddtextfield(
                         lable: "Date",
                         controller: dateController,
@@ -49,7 +49,7 @@ class Homepage extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.01),
 
                     SizedBox(
-                      height: screenHeight*0.05,
+                      height: screenHeight * 0.05,
                       child: Tripaddtextfield(
                         lable: "Destination",
                         controller: destinationController,
@@ -58,30 +58,23 @@ class Homepage extends StatelessWidget {
 
                     SizedBox(height: screenHeight * 0.01),
 
-                    TextButton(onPressed: (){}, 
-                    style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(const Color.fromARGB(255, 255, 43, 43)),
-                        minimumSize: WidgetStateProperty.all(Size(screenWidth*0.5, screenHeight*0.045),)
-                    ),
-                    child: Text("ADD TRip", style: TextStyle(color: Colors.black, fontSize: screenHeight*0.02),),
-                    )
-                  ],
-                ),
-              ),
-
-              SizedBox(height: screenHeight * 0.05),
-
-              Container(
-                height: screenHeight * 0.2,
-                width: screenWidth,
-                decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 2,
-                      blurStyle: BlurStyle.solid,
+                    TextButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all(
+                          const Color.fromARGB(255, 255, 43, 43),
+                        ),
+                        minimumSize: WidgetStateProperty.all(
+                          Size(screenWidth * 0.5, screenHeight * 0.045),
+                        ),
+                      ),
+                      child: Text(
+                        "ADD TRip",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: screenHeight * 0.02,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -122,9 +115,31 @@ class Homepage extends StatelessWidget {
                   ],
                 ),
               ),
+
+              SizedBox(height: screenHeight * 0.05),
+
+              Container(
+                height: screenHeight * 0.2,
+                width: screenWidth,
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 2,
+                      blurStyle: BlurStyle.solid,
+                    ),
+                  ],
+                ),
+              ),
+               SizedBox(height: screenHeight * 0.05),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [BottomNavigationBarItem(label: "Home",icon: Icon(Icons.home)), BottomNavigationBarItem(label: "Home",icon: Icon(Icons.abc))],
       ),
     );
   }
