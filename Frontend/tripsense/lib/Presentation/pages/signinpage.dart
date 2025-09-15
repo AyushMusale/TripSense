@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
-import 'package:tripsense/Presentation/pages/homepage.dart';
 import 'package:tripsense/Presentation/pages/navigationpage.dart';
 import 'package:tripsense/Presentation/pages/signuppage.dart';
 import '../widgets/input_textfield.dart';

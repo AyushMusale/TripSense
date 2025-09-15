@@ -5,7 +5,7 @@ class Tripcreationusecase {
   final TripcreationrepoImp tripcreationrepoImp;
   Tripcreationusecase({required this.tripcreationrepoImp});
 
-  Future<Tripmodel> execute(String date, String destination) async{
-    return await tripcreationrepoImp.tripcreationfn(date, destination);
+  Future<Tripmodel> execute(String date, String destination, String email) async{
+    return await tripcreationrepoImp.tripcreationfn(date, destination, email);
   }
 }

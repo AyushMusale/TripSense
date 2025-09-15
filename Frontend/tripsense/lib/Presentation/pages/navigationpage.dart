@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tripsense/Presentation/pages/homepage.dart';
-import 'package:tripsense/Presentation/pages/signinpage.dart';
+import 'package:tripsense/Presentation/pages/mytripspage.dart';
+
 
 class Navigationpage extends StatefulWidget {
   const Navigationpage({super.key});
@@ -10,7 +11,7 @@ class Navigationpage extends StatefulWidget {
 }
 
 class _NavigationpageState extends State<Navigationpage> {
-    final pages = [Homepage(), Signinpage()];
+    final pages = [Homepage(), MytripsPage()];
     int currentIndex = 0;
   @override
   Widget build(BuildContext context) {

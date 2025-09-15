@@ -14,6 +14,7 @@ class TripcreationHandler extends Bloc<TripEvents, TripcreationState> {
         final res = await _tripcreationusecase.execute(
           event.date,
           event.destination,
+          event.email,
         );
         final tripID = res.id;
         final error = res.errormsg;
@@ -24,7 +25,7 @@ class TripcreationHandler extends Bloc<TripEvents, TripcreationState> {
                 date: res.date,
                 destination: res.destination,
                 id: res.id,
-                userId: res.userId,
+                userId: res.email,
               ),
             ),
           );
