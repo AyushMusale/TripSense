@@ -1,4 +1,4 @@
-import 'package:tripsense/Domain/enities/credentials.dart';
+import 'package:tripsense/Domain/enities/user.dart';
 
 abstract class AuthState {}
 
@@ -7,8 +7,8 @@ class AuthInitial extends AuthState{}
 class AuthLoading extends AuthState{}
 
 class AuthSuccess extends AuthState{
-  final Credentials credentials;
-  AuthSuccess(this.credentials);
+  final User user;
+  AuthSuccess(this.user);
 }
 
 class AuthFailure extends AuthState{

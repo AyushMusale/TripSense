@@ -1,3 +1,4 @@
+import 'package:tripsense/Domain/enities/user.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Domain/usecases/signinusecase.dart';
 import 'package:tripsense/Domain/usecases/signupusecase.dart';
@@ -16,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final res = await _signupusecase.execute(event.email, event.password);
         final status = res.status;
         if (status == 'success') {
-          emit(AuthSuccess(res));
+          emit(AuthSuccess(User(email: res.email, id: res.id)));
         } else if (status == 'error') {
           emit(AuthFailure(status));
         }
@@ -31,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final res = await _signInUseCase.execute(event.email, event.password);
         final status = res.status;
         if (status == 'success') {
-          emit(AuthSuccess(res));
+          emit(AuthSuccess(User(email: res.email, id: res.id)));
         } else {
           emit(AuthFailure(status));
         }

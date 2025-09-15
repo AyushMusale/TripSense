@@ -4,6 +4,8 @@ import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
 import 'package:tripsense/Presentation/pages/homepage.dart';
+import 'package:tripsense/Presentation/pages/navigationpage.dart';
+import 'package:tripsense/Presentation/pages/signuppage.dart';
 import '../widgets/input_textfield.dart';
 
 class Signinpage extends StatelessWidget {
@@ -11,6 +13,7 @@ class Signinpage extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -35,7 +38,7 @@ class Signinpage extends StatelessWidget {
                   ).showSnackBar(SnackBar(content: Text("Account Created")));
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => Homepage()),
+                    MaterialPageRoute(builder: (context) => Navigationpage()),
                   );
                 }
               },
@@ -133,7 +136,14 @@ class Signinpage extends StatelessWidget {
                       children: [
                         Text("Dont Have an Account?"),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Signuppage(),
+                              ),
+                            );
+                          },
                           child: Text(
                             "Create Account",
                             style: TextStyle(color: Colors.blue),

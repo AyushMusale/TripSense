@@ -1,5 +1,5 @@
 import 'package:tripsense/Data/repositories/authrepo.dart';
-import 'package:tripsense/Domain/enities/credentials.dart';
+import 'package:tripsense/Data/models/credentials.dart';
 
 
 class SignInUseCase {

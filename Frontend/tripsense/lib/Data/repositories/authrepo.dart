@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:tripsense/Domain/enities/credentials.dart';
+import 'package:tripsense/Data/models/credentials.dart';
 import 'package:tripsense/Domain/repointerface/authrepo.dart';
 import 'package:http/http.dart' as http;
 

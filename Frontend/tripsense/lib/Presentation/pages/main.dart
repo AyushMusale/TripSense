@@ -8,6 +8,7 @@ import 'package:tripsense/Domain/usecases/tripcreationusecase.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/tripcreation_handler.dart';
 import 'package:tripsense/Presentation/pages/navigationpage.dart';
+import 'package:tripsense/Presentation/pages/signinpage.dart';
 
 
 void main() {
@@ -32,7 +33,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => AuthBloc(signupusecase, signinusecase ),),
         BlocProvider(create: (_)=> TripcreationHandler(tripcreationusecase))
       ],
-      child: MaterialApp(home: Scaffold(body: Center(child: Navigationpage(),),),),
+      child: MaterialApp(home: Scaffold(body: Center(child: Signinpage(),),),),
     );
   }
 }
