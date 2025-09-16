@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tripsense/Data/datasource/routes/go_route_constants.dart';
+import 'package:tripsense/Data/datasource/routes/go_router.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
@@ -35,10 +38,7 @@ class Signinpage extends StatelessWidget {
                   ScaffoldMessenger.of(
                     context,
                   ).showSnackBar(SnackBar(content: Text("Account Created")));
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => Navigationpage()),
-                  );
+                  context.pushReplacementNamed(Routes.navigationpage);
                 }
               },
               builder: (context, state) {
@@ -136,12 +136,7 @@ class Signinpage extends StatelessWidget {
                         Text("Dont Have an Account?"),
                         TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Signuppage(),
-                              ),
-                            );
+                            context.pushNamed(Routes.signuppage);
                           },
                           child: Text(
                             "Create Account",
