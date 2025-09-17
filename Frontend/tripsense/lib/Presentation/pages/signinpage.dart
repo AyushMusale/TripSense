@@ -7,8 +7,6 @@ import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
 import '../widgets/input_textfield.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-
 class Signinpage extends StatefulWidget {
   const Signinpage({super.key});
 
