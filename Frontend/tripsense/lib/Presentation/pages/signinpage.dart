@@ -10,7 +10,7 @@ import '../widgets/input_textfield.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class Signinpage extends StatefulWidget {
-  Signinpage({super.key});
+  const Signinpage({super.key});
 
   @override
   State<Signinpage> createState() => _SigninpageState();

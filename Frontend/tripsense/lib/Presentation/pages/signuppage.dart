@@ -5,8 +5,6 @@ import 'package:tripsense/Data/datasource/routes/go_route_constants.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
-import 'package:tripsense/Presentation/pages/navigationpage.dart';
-import 'package:tripsense/Presentation/pages/signinpage.dart';
 import '../widgets/input_textfield.dart';
 
 class Signuppage extends StatelessWidget {

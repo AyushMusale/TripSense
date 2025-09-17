@@ -7,7 +7,6 @@ import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
 import 'package:tripsense/Presentation/pages/homepage.dart';
 import 'package:tripsense/Presentation/pages/mytripspage.dart';
-import 'package:tripsense/Data/datasource/routes/go_router.dart';
 
 class Navigationpage extends StatefulWidget {
   const Navigationpage({super.key});
