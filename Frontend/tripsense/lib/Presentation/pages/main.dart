@@ -11,9 +11,13 @@ import 'package:tripsense/Domain/usecases/tripcreationusecase.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/mytrips_handler.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/tripcreation_handler.dart';
-import 'package:tripsense/Presentation/pages/signinpage.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('authBox');
   runApp(MainApp());
 }
 

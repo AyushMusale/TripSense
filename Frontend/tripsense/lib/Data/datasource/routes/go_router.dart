@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tripsense/Data/datasource/routes/go_route_constants.dart';
+import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
+import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
 import 'package:tripsense/Presentation/pages/homepage.dart';
 import 'package:tripsense/Presentation/pages/mytripspage.dart';
 import 'package:tripsense/Presentation/pages/navigationpage.dart';
@@ -9,7 +12,24 @@ import 'package:tripsense/Presentation/pages/signuppage.dart';
 
 class Approuter {
   GoRouter goRouter = GoRouter(
-    initialLocation: '/signin',
+    initialLocation: '/',
+
+    redirect: (BuildContext context, GoRouterState state){
+      final authState = context.read<AuthBloc>().state;
+      String currentPath = state.matchedLocation;
+      if(authState is AuthSuccess){
+        if(currentPath == '/signin' || currentPath == '/signup' || currentPath == '/'){
+          return '/navigation';
+        }
+      }
+      if(authState is AuthInitial || authState is AuthFailure){
+        if(currentPath != '/signin' || currentPath != '/signip'){
+          return '/signin';
+        }
+      }
+      return null;
+    },
+
     routes: [
       GoRoute(
         name: Routes.signinpage,

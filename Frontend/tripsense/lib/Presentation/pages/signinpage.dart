@@ -2,19 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tripsense/Data/datasource/routes/go_route_constants.dart';
-import 'package:tripsense/Data/datasource/routes/go_router.dart';
+
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
-import 'package:tripsense/Presentation/pages/navigationpage.dart';
-import 'package:tripsense/Presentation/pages/signuppage.dart';
 import '../widgets/input_textfield.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class Signinpage extends StatelessWidget {
+class Signinpage extends StatefulWidget {
   Signinpage({super.key});
 
+  @override
+  State<Signinpage> createState() => _SigninpageState();
+}
+
+class _SigninpageState extends State<Signinpage> {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
+
 
   @override
   Widget build(BuildContext context) {
