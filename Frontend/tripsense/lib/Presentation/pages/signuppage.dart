@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tripsense/Data/datasource/routes/go_route_constants.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/events/auth_event.dart';
 import 'package:tripsense/Presentation/bloc/state/auth_state.dart';
-import 'package:tripsense/Presentation/pages/navigationpage.dart';
-import 'package:tripsense/Presentation/pages/signinpage.dart';
 import '../widgets/input_textfield.dart';
 
 class Signuppage extends StatelessWidget {
@@ -22,7 +22,7 @@ class Signuppage extends StatelessWidget {
       listener: (context, state) {
         if(state is AuthSuccess){
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Account Created"),),);
-          Navigator.pop(context);
+          context.pop();
         }
         if(state is AuthFailure){
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error),),);
@@ -51,17 +51,12 @@ class Signuppage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Account Created")),
                       );
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Navigationpage(),
-                        ),
-                      );
+                      context.pushNamed(Routes.signinpage);
                     }
                   },
                   builder: (context, state) {
                     if (state is AuthLoading) {
-                      return Center(child: CircularProgressIndicator());
+                      return Scaffold(body: Center(child: CircularProgressIndicator()));
                     }
                     return Column(
                       //main container
@@ -156,14 +151,7 @@ class Signuppage extends StatelessWidget {
                             Text("Alreadty Have an Account?"),
                             TextButton(
                               onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return Signinpage();
-                                    },
-                                  ),
-                                );
+                                context.pushReplacementNamed(Routes.signinpage);
                               },
                               child: Text(
                                 "Create Account",

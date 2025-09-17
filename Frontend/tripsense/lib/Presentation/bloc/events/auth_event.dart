@@ -14,3 +14,7 @@ class SignInrequested extends AuthEvent{
   
   SignInrequested(this.email, this.password);
 }
+
+class CheckAuthstatus extends AuthEvent{}
+
+class SignOutrequested extends AuthEvent{}
