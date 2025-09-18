@@ -11,7 +11,7 @@ class MytripsHandler extends Bloc<MytripsEvent, MytripsState>{
         emit(MyTripsLoadingState());
         try{
             final res = await getmytripsusecase.execute(event.email);
-            emit(MyTripsSuccessState(mytrips: Mytrips(mytrips: res.mytripsList)));
+            emit(MyTripsSuccessState(mytrips: Mytrips(mytripslist: res.mytripsList)));
         }
         catch(err){
           emit(MyTripsFailureState("could not load trips"));
