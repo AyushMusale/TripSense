@@ -23,7 +23,7 @@ class Approuter {
         }
       }
       if(authState is AuthInitial || authState is AuthFailure){
-        if(currentPath != '/signin' || currentPath != '/signip'){
+        if(currentPath != '/signin' && currentPath != '/signup'){
           return '/signin';
         }
       }
@@ -34,12 +34,12 @@ class Approuter {
       GoRoute(
         name: Routes.signinpage,
         path: Routes.signinpage,
-        builder: (context, state) => Signinpage(),
+        pageBuilder: (context, state) => const MaterialPage(child: Signinpage()),
       ),
       GoRoute(
         name: Routes.signuppage,
         path: Routes.signuppage,
-        builder: (context, state) => Signuppage(),
+        pageBuilder: (context, state) =>  MaterialPage(child: Signuppage()),
       ),
       GoRoute(
         name: Routes.navigationpage,

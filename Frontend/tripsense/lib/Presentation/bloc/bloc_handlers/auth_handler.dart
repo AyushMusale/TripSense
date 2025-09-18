@@ -48,10 +48,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<SignOutrequested>((event, emit)async{
       emit(AuthLoading());
+      try{
       var box = Hive.box('authBox');
       await box.clear();
       emit(AuthInitial());
+      }
+      catch(err){
+        emit(AuthInitial());
+      }
     });
+
   }
   static AuthState _checkInitialAuthState() {
     var box = Hive.box('authBox');
