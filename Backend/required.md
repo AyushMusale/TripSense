@@ -1,4 +1,3 @@
-
 # 📝 API Specification for TripSense App
 
 ---
@@ -10,17 +9,15 @@ Each user’s document should look like:
 
 ```json
 {
+  "email": "user@example.com",
+  "Trips": {
+    "date": "2025-09-20",
+    "destination": "Mumbai",
     "email": "user@example.com",
-    "Trips": [
-        {
-            "date": "2025-09-20",
-            "destination": "Mumbai",
-            "email": "user@example.com",
-            "mode": "Car",
-            "id": "unique_trip_id_12345",
-            "errormsg": ""
-        }
-    ]
+    "mode": "Car",
+    "id": "unique_trip_id_12345",
+    "errormsg": ""
+  }
 }
 ```
 
@@ -29,26 +26,28 @@ Each user’s document should look like:
 ## ✅ 1️⃣ Trip Creation Response Structure
 
 ### Successful Trip Creation Response
+
 ```json
 {
-    "date": "2025-09-20",
-    "destination": "Mumbai",
-    "email": "user@example.com",
-    "mode": "Car",
-    "id": "unique_trip_id_12345",
-    "errormsg": ""
+  "date": "2025-09-20",
+  "destination": "Mumbai",
+  "email": "user@example.com",
+  "mode": "Car",
+  "id": "unique_trip_id_12345",
+  "errormsg": ""
 }
 ```
 
 ### Failed Trip Creation Response
+
 ```json
 {
-    "date": null,
-    "destination": null,
-    "email": null,
-    "mode": null,
-    "id": null,
-    "errormsg": "Reason for failure"
+  "date": null,
+  "destination": null,
+  "email": null,
+  "mode": null,
+  "id": null,
+  "errormsg": "Reason for failure"
 }
 ```
 
@@ -58,7 +57,7 @@ Each user’s document should look like:
 
 ```json
 {
-    "email": "user@example.com"
+  "email": "user@example.com"
 }
 ```
 
@@ -67,34 +66,36 @@ Each user’s document should look like:
 ## ✅ 3️⃣ Get User Trips Response Structure
 
 ### Successful Response Example
+
 ```json
 {
-    "myTrips": [
-        {
-            "date": "2025-09-20",
-            "destination": "Mumbai",
-            "email": "user@example.com",
-            "mode": "Car",
-            "id": "unique_trip_id_12345",
-            "errormsg": ""
-        },
-        {
-            "date": "2025-09-22",
-            "destination": "Nashik",
-            "email": "user@example.com",
-            "mode": "Bus",
-            "id": "unique_trip_id_67890",
-            "errormsg": ""
-        }
-    ],
-    "errormsg": ""
+  "myTrips": [
+    {
+      "date": "2025-09-20",
+      "destination": "Mumbai",
+      "email": "user@example.com",
+      "mode": "Car",
+      "id": "unique_trip_id_12345",
+      "errormsg": ""
+    },
+    {
+      "date": "2025-09-22",
+      "destination": "Nashik",
+      "email": "user@example.com",
+      "mode": "Bus",
+      "id": "unique_trip_id_67890",
+      "errormsg": ""
+    }
+  ],
+  "errormsg": ""
 }
 ```
 
 ### Failed Response Example
+
 ```json
 {
-    "myTrips": [],
-    "errormsg": "Unable to fetch trips: <error reason>"
+  "myTrips": [],
+  "errormsg": "Unable to fetch trips: <error reason>"
 }
 ```

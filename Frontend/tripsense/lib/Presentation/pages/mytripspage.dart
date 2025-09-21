@@ -51,7 +51,7 @@ class MytripsPage extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
                             onTap: (){
-                              final id = list[currentIndex]['id'];
+                              final id = list[currentIndex]['_id'];
                               context.push('/tripdetails/$id');
                             },
                             child: Card(
