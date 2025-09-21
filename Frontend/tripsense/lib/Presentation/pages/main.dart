@@ -4,6 +4,7 @@ import 'package:tripsense/Data/datasource/routes/go_router.dart';
 import 'package:tripsense/Data/repositories/authrepo.dart';
 import 'package:tripsense/Data/repositories/getmytrips_repo.dart';
 import 'package:tripsense/Data/repositories/tripcreationrepo.dart';
+import 'package:tripsense/Domain/enities/trip.dart';
 import 'package:tripsense/Domain/usecases/getmytripsusecase.dart';
 import 'package:tripsense/Domain/usecases/signinusecase.dart';
 import 'package:tripsense/Domain/usecases/signupusecase.dart';
@@ -14,10 +15,12 @@ import 'package:tripsense/Presentation/bloc/bloc_handlers/tripcreation_handler.d
 import 'package:hive_flutter/hive_flutter.dart';
 
 
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('authBox');
+  await Hive.openBox('tripbox');
   runApp(MainApp());
 }
 

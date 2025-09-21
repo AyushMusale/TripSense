@@ -1,3 +1,4 @@
+
 class Trip{
   final String date;
   final String destination;
@@ -8,3 +9,4 @@ class Trip{
   
   Trip({required this.date, required this.destination, this.mode, this.id, this.userId});
 }
+

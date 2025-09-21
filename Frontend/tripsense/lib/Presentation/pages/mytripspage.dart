@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tripsense/Domain/enities/trip.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/mytrips_handler.dart';
 import 'package:tripsense/Presentation/bloc/state/mytrips_state.dart';
-
+import 'package:hive/hive.dart';
 
 class MytripsPage extends StatelessWidget {
   const MytripsPage({super.key});
@@ -20,7 +21,24 @@ class MytripsPage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        List<Map<String, String>> list = [];
+        List<Map<String, String>> list = [
+          {
+            "date": "2025-09-20",
+            "destination": "Mumbai",
+            "email": "user@example.com",
+            "mode": "Car",
+            "id": "unique_trip_id_12345",
+            "errormsg": "",
+          },
+          {
+            "date": "2025-09-22",
+            "destination": "Nashik",
+            "email": "user@example.com",
+            "mode": "Bus",
+            "id": "unique_trip_id_67890",
+            "errormsg": "",
+          },
+        ];
         if (state is MyTripsLoadingState) {
           return Scaffold(body: CircularProgressIndicator());
         }
@@ -50,8 +68,8 @@ class MytripsPage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                            onTap: (){
-                              final id = list[currentIndex]['_id'];
+                            onTap: () {
+                              final id = list[currentIndex]['id'];
                               context.push('/tripdetails/$id');
                             },
                             child: Card(

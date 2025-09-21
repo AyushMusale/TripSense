@@ -66,7 +66,7 @@ class Approuter {
         path: '/tripdetails/:id',
         pageBuilder: (context, state) {
           final tripId = state.pathParameters['id'];
-          return MaterialPage(child: Tripdetailspage(id: tripId));
+          return MaterialPage(child: Tripdetailspage(id: tripId!));
         },
       ),
     ],
