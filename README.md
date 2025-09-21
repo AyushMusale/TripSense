@@ -1,2 +1,2 @@
 # TripSense
-App for SIH 
+Flutter pracctice app
