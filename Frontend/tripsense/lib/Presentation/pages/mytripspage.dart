@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tripsense/Domain/enities/trip.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/mytrips_handler.dart';
 import 'package:tripsense/Presentation/bloc/state/mytrips_state.dart';
-import 'package:hive/hive.dart';
 
 class MytripsPage extends StatelessWidget {
   const MytripsPage({super.key});
