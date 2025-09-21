@@ -9,7 +9,7 @@ class AuthrepoImp extends Authrepo {
 
   @override
   Future<Credentials> signUpReq(String email, String password) async {
-    final url = Uri.parse('http://10.0.2.2:8001/user/signup');
+    final url = Uri.parse('http://10.0.2.2:5000/api/auth/register');
     final res = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -17,10 +17,10 @@ class AuthrepoImp extends Authrepo {
     );
     final jsonRes = jsonDecode(res.body);
     return Credentials(
-      email: jsonRes['email'],
-      password: jsonRes['password'],
-      id: jsonRes['id'],
-      status: jsonRes['status'],
+      email: jsonRes['data']["user"]['email'],
+      password: " ",
+      id: jsonRes["data"]["user"]['_id'],
+      status: jsonRes['success'].toString(),
     );
   }
 

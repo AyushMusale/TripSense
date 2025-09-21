@@ -17,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       try {
         final res = await _signupusecase.execute(event.email, event.password);
         final status = res.status;
-        if (status == 'success') {
+        if (status == 'true') {
           emit(AuthSuccess(User(email: res.email, id: res.id)));
         } else if (status == 'error') {
           emit(AuthFailure(status));
