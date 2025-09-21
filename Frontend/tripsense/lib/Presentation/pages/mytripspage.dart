@@ -19,24 +19,7 @@ class MytripsPage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        List<Map<String, String>> list = [
-          {
-            "date": "2025-09-20",
-            "destination": "Mumbai",
-            "email": "user@example.com",
-            "mode": "Car",
-            "id": "unique_trip_id_12345",
-            "errormsg": "",
-          },
-          {
-            "date": "2025-09-22",
-            "destination": "Nashik",
-            "email": "user@example.com",
-            "mode": "Bus",
-            "id": "unique_trip_id_67890",
-            "errormsg": "",
-          },
-        ];
+        List<Map<String, String>> list = [];
         if (state is MyTripsLoadingState) {
           return Scaffold(body: CircularProgressIndicator());
         }
