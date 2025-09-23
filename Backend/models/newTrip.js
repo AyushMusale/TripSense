@@ -1,19 +1,14 @@
-import {User } from "./trips.js";
+import User from "./Trips.js";
 
-async function addTrip(useremail,tripData) {
-    let user = await User.findOne({email:useremail});
+export async function addTrip(userEmail, tripData) {
+  let user = await User.findOne({ email: userEmail });
 
+  if (!user) {
+    user = new User({ email: userEmail, Trips: [tripData] });
+  } else {
+    user.Trips.push(tripData);
+  }
 
-    if(!user) {
-        user = new User ({
-           email:useremail,
-           Trips:[tripData]
-        });
-    }
-    else{
-        user.Trips.push(tripData)
-    }
-    await user.save();
-    console.log("Trip saved successfully");
-    
-    }
+  await user.save();
+  return user;
+}
