@@ -13,25 +13,25 @@ import 'package:tripsense/Presentation/pages/tripdetailspage.dart';
 
 class Approuter {
   GoRouter goRouter = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/tripdetails/:id',
 
-    redirect: (BuildContext context, GoRouterState state) {
-      final authState = context.read<AuthBloc>().state;
-      String currentPath = state.matchedLocation;
-      if (authState is AuthSuccess) {
-        if (currentPath == '/signin' ||
-            currentPath == '/signup' ||
-            currentPath == '/') {
-          return '/navigation';
-        }
-      }
-      if (authState is AuthInitial || authState is AuthFailure) {
-        if (currentPath != '/signin' && currentPath != '/signup') {
-          return '/signin';
-        }
-      }
-      return null;
-    },
+    // redirect: (BuildContext context, GoRouterState state) {
+    //   final authState = context.read<AuthBloc>().state;
+    //   String currentPath = state.matchedLocation;
+    //   if (authState is AuthSuccess) {
+    //     if (currentPath == '/signin' ||
+    //         currentPath == '/signup' ||
+    //         currentPath == '/') {
+    //       return '/navigation';
+    //     }
+    //   }
+    //   if (authState is AuthInitial || authState is AuthFailure) {
+    //     if (currentPath != '/signin' && currentPath != '/signup') {
+    //       return '/signin';
+    //     }
+    //   }
+    //   return null;
+    // },
 
     routes: [
       GoRoute(

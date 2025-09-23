@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tripsense/Data/datasource/routes/go_router.dart';
 import 'package:tripsense/Data/repositories/authrepo.dart';
 import 'package:tripsense/Data/repositories/getmytrips_repo.dart';
+import 'package:tripsense/Data/repositories/gettripbyidrepo.dart';
 import 'package:tripsense/Data/repositories/tripcreationrepo.dart';
 import 'package:tripsense/Domain/usecases/getmytripsusecase.dart';
+import 'package:tripsense/Domain/usecases/gettripbyidusecase.dart';
 import 'package:tripsense/Domain/usecases/signinusecase.dart';
 import 'package:tripsense/Domain/usecases/signupusecase.dart';
 import 'package:tripsense/Domain/usecases/tripcreationusecase.dart';
@@ -12,6 +14,7 @@ import 'package:tripsense/Presentation/bloc/bloc_handlers/auth_handler.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/mytrips_handler.dart';
 import 'package:tripsense/Presentation/bloc/bloc_handlers/tripcreation_handler.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:tripsense/Presentation/bloc/bloc_handlers/tripdetails_handler.dart';
 
 
 
@@ -42,6 +45,8 @@ class MainApp extends StatelessWidget {
       getmytripsRepoImp,
     );
 
+    final GettripbyidrepoImp gettripbyidrepoImp = GettripbyidrepoImp();
+    final Gettripbyidusecase gettripbyidusecase = Gettripbyidusecase(gettripbyidrepoImp);
     final Approuter approuter = Approuter();
 
     return MultiBlocProvider(
@@ -49,6 +54,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => AuthBloc(signupusecase, signinusecase)),
         BlocProvider(create: (_) => TripcreationHandler(tripcreationusecase)),
         BlocProvider(create: (_) => MytripsHandler(getmytripsusecase)),
+        BlocProvider(create: (_)=> TripdetailsHandler(gettripbyidusecase)),
       ],
       child: MaterialApp.router(
         //restorationScopeId: null,
