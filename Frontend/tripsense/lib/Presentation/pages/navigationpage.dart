@@ -21,13 +21,15 @@ class _NavigationpageState extends State<Navigationpage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
-        if(state is AuthLoading){
-          return Scaffold(body: Center(child: CircularProgressIndicator(),),);
-        }
-        if(state is AuthInitial){
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthInitial) {
           context.pushReplacementNamed(Routes.signinpage);
+        }
+      },
+      builder: (context, state) {
+        if (state is AuthLoading) {
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
         }
         return Scaffold(
           appBar: AppBar(

@@ -9,37 +9,41 @@ import 'package:tripsense/Presentation/pages/mytripspage.dart';
 import 'package:tripsense/Presentation/pages/navigationpage.dart';
 import 'package:tripsense/Presentation/pages/signinpage.dart';
 import 'package:tripsense/Presentation/pages/signuppage.dart';
+import 'package:tripsense/Presentation/pages/tripdetailspage.dart';
 
 class Approuter {
   GoRouter goRouter = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/tripdetails/:id',
 
-    redirect: (BuildContext context, GoRouterState state){
-      final authState = context.read<AuthBloc>().state;
-      String currentPath = state.matchedLocation;
-      if(authState is AuthSuccess){
-        if(currentPath == '/signin' || currentPath == '/signup' || currentPath == '/'){
-          return '/navigation';
-        }
-      }
-      if(authState is AuthInitial || authState is AuthFailure){
-        if(currentPath != '/signin' || currentPath != '/signip'){
-          return '/signin';
-        }
-      }
-      return null;
-    },
+    // redirect: (BuildContext context, GoRouterState state) {
+    //   final authState = context.read<AuthBloc>().state;
+    //   String currentPath = state.matchedLocation;
+    //   if (authState is AuthSuccess) {
+    //     if (currentPath == '/signin' ||
+    //         currentPath == '/signup' ||
+    //         currentPath == '/') {
+    //       return '/navigation';
+    //     }
+    //   }
+    //   if (authState is AuthInitial || authState is AuthFailure) {
+    //     if (currentPath != '/signin' && currentPath != '/signup') {
+    //       return '/signin';
+    //     }
+    //   }
+    //   return null;
+    // },
 
     routes: [
       GoRoute(
         name: Routes.signinpage,
         path: Routes.signinpage,
-        builder: (context, state) => Signinpage(),
+        pageBuilder:
+            (context, state) => const MaterialPage(child: Signinpage()),
       ),
       GoRoute(
         name: Routes.signuppage,
         path: Routes.signuppage,
-        builder: (context, state) => Signuppage(),
+        pageBuilder: (context, state) => MaterialPage(child: Signuppage()),
       ),
       GoRoute(
         name: Routes.navigationpage,
@@ -50,14 +54,20 @@ class Approuter {
       GoRoute(
         name: Routes.homepage,
         path: Routes.homepage,
-        pageBuilder:
-            (context, state) => const MaterialPage(child: Homepage()),
+        pageBuilder: (context, state) => const MaterialPage(child: Homepage()),
       ),
       GoRoute(
         name: Routes.mytripspage,
         path: Routes.mytripspage,
         pageBuilder:
             (context, state) => const MaterialPage(child: MytripsPage()),
+      ),
+      GoRoute(
+        path: '/tripdetails/:id',
+        pageBuilder: (context, state) {
+          final tripId = state.pathParameters['id'];
+          return MaterialPage(child: Tripdetailspage(id: tripId!));
+        },
       ),
     ],
   );

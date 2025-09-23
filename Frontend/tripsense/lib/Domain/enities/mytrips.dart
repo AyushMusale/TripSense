@@ -1,4 +1,4 @@
 class Mytrips {
-  final List<Map<String, String>> mytrips;
-  Mytrips({required this.mytrips});
+  final List<Map<String, String>> mytripslist;
+  Mytrips({required this.mytripslist});
 }
