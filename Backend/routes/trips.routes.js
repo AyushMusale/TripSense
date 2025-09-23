@@ -1,38 +1,53 @@
 import express from "express";
-import User from "./models/Trips.js";
+import User from "../models/Trips.js";
 
-const router =express.Router();
+const router = express.Router();
 
-router.post("/tripcreated", async(req,res)=>{
-    try{
-        const{email,Date,destination,mode,id,errmsg} =req.body;
+// Create a trip per required.md
+router.post("/trips", async (req, res) => {
+  try {
+    const { email } = req.body;
 
-        const newTrip = {
-            Date,
-            destination,
-            email,
-            mode,
-            id,
-            errmsg:""
-        };
-
-        let user = await User.findOne({email});
-
-        if(!user){
-            user= new User({
-                email,
-                Trips:[newTrip]
-            });
-        }
-        else{
-            user.Trips.push(newTrip);
-        }
-
-        await user.save();
-        res.status(200).json({message:"Trip added successfully!", Trips:user.Trips});
-    }catch(err){
-        console.error(err);
-        res.status(500).json({message:"Server error"});
+    if (!email) {
+      return res.status(400).json({
+        date: null,
+        destination: null,
+        email: null,
+        mode: null,
+        id: null,
+        errormsg: "email is required",
+      });
     }
-})
+
+    const generatedTrip = {
+      date: new Date().toISOString().slice(0, 10),
+      destination: "",
+      email,
+      mode: "",
+      id: `${Date.now()}`,
+      errormsg: "",
+    };
+
+    let user = await User.findOne({ email });
+    if (!user) {
+      user = new User({ email, Trips: [generatedTrip] });
+    } else {
+      user.Trips.push(generatedTrip);
+    }
+
+    await user.save();
+    return res.status(201).json(generatedTrip);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      date: null,
+      destination: null,
+      email: null,
+      mode: null,
+      id: null,
+      errormsg: "Server error",
+    });
+  }
+});
+
 export default router;

@@ -1,0 +1,256 @@
+### NATPAC Travel App API Requests
+### Use this file with REST Client extension in VS Code
+
+@baseUrl = http://localhost:5000/api
+@token = YOUR_JWT_TOKEN_HERE
+
+### Health Check
+GET {{baseUrl}}/../health
+
+### Register User
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123",
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "+1234567890",
+  "gender": "male",
+  "consent": {
+    "dataCollection": true,
+    "dataProcessing": true,
+    "dataSharing": true
+  }
+}
+
+### Login User
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Get Current User
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{token}}
+
+### Refresh Token
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "YOUR_REFRESH_TOKEN_HERE"
+}
+
+### Create Trip
+POST {{baseUrl}}/trips
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "startLocation": {
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "timestamp": "2024-01-01T09:00:00Z",
+    "address": {
+      "street": "123 Main St",
+      "city": "New York",
+      "state": "NY",
+      "country": "USA",
+      "formatted": "123 Main St, New York, NY, USA"
+    }
+  },
+  "endLocation": {
+    "latitude": 40.7589,
+    "longitude": -73.9851,
+    "timestamp": "2024-01-01T09:30:00Z",
+    "address": {
+      "street": "456 Broadway",
+      "city": "New York",
+      "state": "NY",
+      "country": "USA",
+      "formatted": "456 Broadway, New York, NY, USA"
+    }
+  },
+  "startTime": "2024-01-01T09:00:00Z",
+  "endTime": "2024-01-01T09:30:00Z",
+  "modeOfTransport": "car",
+  "purpose": "work",
+  "companions": [
+    {
+      "name": "Jane Doe",
+      "relationship": "colleague",
+      "ageGroup": "adult",
+      "gender": "female"
+    }
+  ],
+  "notes": "Morning commute to office"
+}
+
+### Get User Trips
+GET {{baseUrl}}/trips?page=1&limit=10
+Authorization: Bearer {{token}}
+
+### Get Trip by ID
+GET {{baseUrl}}/trips/TRIP_ID_HERE
+Authorization: Bearer {{token}}
+
+### Update Trip
+PUT {{baseUrl}}/trips/TRIP_ID_HERE
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "modeOfTransport": "bus",
+  "notes": "Updated trip notes"
+}
+
+### Start Trip (Real-time Tracking)
+POST {{baseUrl}}/trips/TRIP_ID_HERE/start
+Authorization: Bearer {{token}}
+
+### Add GPS Tracking Point
+POST {{baseUrl}}/trips/TRIP_ID_HERE/track
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "latitude": 40.7200,
+  "longitude": -73.9900,
+  "accuracy": 5,
+  "altitude": 10,
+  "speed": 25,
+  "heading": 45,
+  "timestamp": "2024-01-01T09:15:00Z"
+}
+
+### End Trip
+POST {{baseUrl}}/trips/TRIP_ID_HERE/end
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "endLocation": {
+    "latitude": 40.7589,
+    "longitude": -73.9851
+  }
+}
+
+### Report Trip Issue
+POST {{baseUrl}}/trips/TRIP_ID_HERE/issues
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "type": "delay",
+  "description": "Traffic jam on the highway",
+  "severity": "medium",
+  "location": {
+    "latitude": 40.7200,
+    "longitude": -73.9900
+  }
+}
+
+### Get Trip Statistics
+GET {{baseUrl}}/trips/stats/summary
+Authorization: Bearer {{token}}
+
+### Get Analytics Dashboard
+GET {{baseUrl}}/analytics/dashboard?period=monthly
+Authorization: Bearer {{token}}
+
+### Get Insights
+GET {{baseUrl}}/analytics/insights
+Authorization: Bearer {{token}}
+
+### Export Data
+GET {{baseUrl}}/analytics/export?format=json&startDate=2024-01-01&endDate=2024-01-31
+Authorization: Bearer {{token}}
+
+### Get User Profile
+GET {{baseUrl}}/users/profile
+Authorization: Bearer {{token}}
+
+### Update User Profile
+PUT {{baseUrl}}/users/profile
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "+1234567890",
+  "gender": "male"
+}
+
+### Change Password
+PUT {{baseUrl}}/users/password
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "currentPassword": "password123",
+  "newPassword": "newpassword123"
+}
+
+### Update Preferences
+PUT {{baseUrl}}/users/preferences
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "units": "metric",
+  "language": "en",
+  "notifications": {
+    "email": true,
+    "push": true
+  },
+  "privacy": {
+    "shareData": false,
+    "anonymizeData": true
+  }
+}
+
+### Update Consent
+PUT {{baseUrl}}/users/consent
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "dataCollection": true,
+  "dataProcessing": true,
+  "dataSharing": false
+}
+
+### Get User Statistics
+GET {{baseUrl}}/users/stats
+Authorization: Bearer {{token}}
+
+### Admin Dashboard (Admin/Analyst only)
+GET {{baseUrl}}/admin/dashboard
+Authorization: Bearer ADMIN_TOKEN_HERE
+
+### Get All Users (Admin/Analyst only)
+GET {{baseUrl}}/admin/users?page=1&limit=10
+Authorization: Bearer ADMIN_TOKEN_HERE
+
+### Get All Trips (Admin/Analyst only)
+GET {{baseUrl}}/admin/trips?page=1&limit=10
+Authorization: Bearer ADMIN_TOKEN_HERE
+
+### Get System Analytics (Admin/Analyst only)
+GET {{baseUrl}}/admin/analytics?startDate=2024-01-01&endDate=2024-01-31
+Authorization: Bearer ADMIN_TOKEN_HERE
+
+### Export System Data (Admin/Analyst only)
+GET {{baseUrl}}/admin/export?type=trips&format=csv&startDate=2024-01-01&endDate=2024-01-31
+Authorization: Bearer ADMIN_TOKEN_HERE
+
+### Get Issues (Admin/Analyst only)
+GET {{baseUrl}}/admin/issues?status=reported&severity=high
+Authorization: Bearer ADMIN_TOKEN_HERE
+

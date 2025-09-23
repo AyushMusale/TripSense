@@ -1,38 +1,45 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const tripsSchema =new mongoose.Schema 
-({
-    "Trips":{
-        Date: {
-            type:Date,
-            require:true,
-        },
-        destination:{
-            type:String,
-            require:true,
-        },
-        email:{
-            type:String,
-            require:true
-        },
-        Mode: {
-            type:String,
-            require:true,
-        },
-        id:{
-            type:String,
-            require:true
-        },
-        errmsg:" "
-    }
-})
-const userSchema = mongoose.Schema({
-    email:{
-        type:String,require:true,unique:true
+// Trip subdocument schema matching required.md
+const TripSchema = new mongoose.Schema(
+  {
+    date: {
+      type: String, // store as YYYY-MM-DD string as per spec
+      required: true,
     },
-    Trips:[tripsSchema]
-});
+    destination: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    mode: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    errormsg: {
+      type: String,
+      default: "",
+    },
+  },
+  { _id: false }
+);
 
-const User = mongoose.models("user",tripsSchema);
+// User schema with trips array
+const UserSchema = new mongoose.Schema(
+  {
+    email: { type: String, required: true, unique: true },
+    Trips: { type: [TripSchema], default: [] },
+  },
+  { timestamps: true }
+);
+
+const User = mongoose.models.User || mongoose.model("User", UserSchema);
 
 export default User;
