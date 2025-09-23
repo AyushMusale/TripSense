@@ -1,7 +1,7 @@
 import express from "express"
 import User from "./models/Trips.js";
 
-const router = express.Router();
+const Responserouter = express.Router();
 
 router.get("/myTrips/:email", async (req,res) =>{
     try{
@@ -24,4 +24,4 @@ router.get("/myTrips/:email", async (req,res) =>{
 }
 });
 
-export default router
+export default Responserouter
